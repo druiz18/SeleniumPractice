@@ -13,30 +13,19 @@ class using_unittest(unittest.TestCase):
 
     def test_ChangeWindow (self):
         driver = self.driver 
-        
+
+        driver.implicitly_wait(5)
         driver.get("http://www.google.com")
         driver.maximize_window ()
-        # try:
-        #     element = WebDriverWait(driver, 10).until(EC.EC.presence_of_all_elements_located((By.NAME, "q")))
-        # finally:
-        #     driver.quit()
-
         driver.execute_script("window.open('');")
-        #time.sleep(3)
         driver.switch_to.window(driver.window_handles[1])
         driver.get("http://stackoverflow.com")
-        #time.sleep(3)
         driver.switch_to.window(driver.window_handles[0])
-        #time.sleep(3)
         driver.execute_script("window.open('');")
-        #time.sleep(3)
         driver.switch_to.window(driver.window_handles[2])
         driver.get("http://www.python.org")
-        #time.sleep(3)
         driver.get("http://www.blender.org")
-        #time.sleep(3)
         driver.back()
-        #time.sleep(3)
         driver.switch_to.window(driver.window_handles[0])
         self.assertIn("Google", driver.title)
         element=driver.find_element_by_name("q")
@@ -47,7 +36,6 @@ class using_unittest(unittest.TestCase):
             element = WebDriverWait(driver, 10).until(EC.EC.presence_of_all_elements_located((By.NAME, "q")))
         finally:
             driver.quit()
-        #time.sleep(5)
         assert "no se encontró el elemento: " not in driver.page_source
 
 if __name__ == '__main__':
