@@ -32,10 +32,6 @@ class using_unittest(unittest.TestCase):
         
         element.send_keys("selenium")
         element.send_keys(Keys.RETURN)
-        try:
-            element = WebDriverWait(driver, 10).until(EC.EC.presence_of_all_elements_located((By.NAME, "q")))
-        finally:
-            driver.quit()
         assert "no se encontró el elemento: " not in driver.page_source
 
 if __name__ == '__main__':

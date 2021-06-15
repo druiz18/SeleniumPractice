@@ -16,7 +16,8 @@ class using_unittest(unittest.TestCase):
         driver.get("http://www.google.com")
         driver.save_screenshot('img2.png')
         time.sleep(3)
-
+        assert "no se encontró el elemento: " not in driver.page_source
+        
     def test_compare (self):
         img1 = cv2.imread('img1.png')
         img2 = cv2.imread('img2.png')
@@ -38,6 +39,7 @@ class using_unittest(unittest.TestCase):
             if teclado == 27:
                 break
             cv2.destroyAllWindows()
+        
 
 if __name__=='__main__':
     unittest.main()
