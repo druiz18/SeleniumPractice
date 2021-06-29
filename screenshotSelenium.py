@@ -14,13 +14,15 @@ class using_unittest(unittest.TestCase):
 
     def test_using_opencv(self):
         driver = self.driver
-        driver.get("http://www.youtube.com")
+        driver.get("http://www.google.com")
         driver.save_screenshot('img2.png')
         driver.implicitly_wait(3)
         #time.sleep(3)
         #assert "no se encontró el elemento: " not in driver.page_source
-
+        
+    time.sleep(10)
     def test_compare(self):
+        
         imagen1 = cv2.imread("img1.png", 1)
         imagen2 = cv2.imread("img2.png", 1)
 
